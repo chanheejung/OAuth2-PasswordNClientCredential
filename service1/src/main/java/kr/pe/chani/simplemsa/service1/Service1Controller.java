@@ -18,6 +18,7 @@ public class Service1Controller {
     /** 관리자 API */
     @PostMapping(value = "/admin/access-resource")
     public String adminServices() {
+
         return "Admin Resources";
     }
 }
