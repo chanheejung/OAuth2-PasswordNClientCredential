@@ -1,0 +1,8 @@
+server:
+  port: 8011
+
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8901/auth/user
+      # token-type: Bearer

@@ -1,0 +1,286 @@
+{
+	"info": {
+		"_postman_id": "7a9a397a-ec49-451c-812a-8415da0a4139",
+		"name": "OAuth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Issue Token - Password Grant",
+			"item": [
+				{
+					"name": "Issue Token (USER)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "service1secret",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "service1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "webclient",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "chani",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8901/auth/oauth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8901",
+							"path": [
+								"auth",
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Issue OAuth Token (ADMIN)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "service1",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "service1secret",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "webclient",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "chanijung",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8901/auth/oauth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8901",
+							"path": [
+								"auth",
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Issue Token - Client Grant",
+			"item": [
+				{
+					"name": "Issue Token (ADMIN)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "service1secret",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "service1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "webclient",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "john.carnell",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8901/auth/oauth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8901",
+							"path": [
+								"auth",
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Access Resource",
+			"item": [
+				{
+					"name": "Access Resource (USER)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ee8e46c8-5dfe-41ed-9c04-dbce11f22d96",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8011/access-resource",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8011",
+							"path": [
+								"access-resource"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Access Resource (ADMIN)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ee8e46c8-5dfe-41ed-9c04-dbce11f22d96",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8011/admin/access-resource",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8011",
+							"path": [
+								"admin",
+								"access-resource"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Access User Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer 94dc1450-0349-4b54-b3e0-b0397452d1e9",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8901/auth/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8901",
+							"path": [
+								"auth",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
